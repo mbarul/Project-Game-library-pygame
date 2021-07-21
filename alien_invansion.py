@@ -27,6 +27,7 @@ class AlienInvasion:
         """"Rozpoczęcie pętli głównej gry."""
         while True:
             self._check_events()
+            self.ship.update()
             self._update_screen()
 
     def _check_events(self):
@@ -35,6 +36,24 @@ class AlienInvasion:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
+            elif event.type == pygame.KEYDOWN:
+                self._check_keydown_events(event)
+            elif event.type == pygame.KEYUP:
+                self._check_keyup_events(event)
+    def _check_keydown_events(self, event):
+        """Naciśnięcie przycisku"""    
+        if event.key == pygame.K_RIGHT:
+            #Przesunięcie statku w prawo
+            self.ship.moving_right = True
+                #Przesunięcie statku w lewo
+        elif event.key == pygame.K_LEFT:
+            self.ship.moving_left = True
+    def _check_keyup_events(self, event):   
+        """Reakcja na zwolnienie przycisku"""     
+        if event.key == pygame.K_RIGHT:
+            self.ship.moving_right = False
+        elif event.key == pygame.K_LEFT:
+            self.ship.moving_left = False
     
     def _update_screen(self):
         """Uaktualnienie obrazów na ekranie i przejście do nowego ekranu."""
