@@ -15,3 +15,10 @@ class Settings:
         self.bullets_allowed = 3
         #Ustawienie dotyczzące statku
         self.ship_speed = 0.5
+
+        #Ustawienia dotyczące obcego.
+        self.alien_speed = 1.0
+        self.fleet_drop_speed = 10
+
+        #Wartość fleet_direction wynosząca 1 oznacza prawo, natomiast -1 oznacza lewo.
+        self.fleet_direction = 1
